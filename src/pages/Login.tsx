@@ -48,7 +48,15 @@ const Login = () => {
   return (
     <Box padding={10}>
       <Heading mb={5}>Welcome to Business Loan Application Page.</Heading>
-      {isLoading && <Spinner size="lg" />}
+      {isLoading && (
+        <Spinner
+          thickness="4px"
+          speed="0.65s"
+          emptyColor="gray.200"
+          color="blue.500"
+          size="xl"
+        />
+      )}
       <Tabs variant="enclosed" width="70%">
         <TabList>
           <Tab>New User</Tab>

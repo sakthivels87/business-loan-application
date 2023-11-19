@@ -25,7 +25,10 @@ export interface BalanceSheet {
   profitOrLoss: number;
   assetsValue: number;
 }
-const BalanceSheet = () => {
+interface Props {
+  onNext: () => void;
+}
+const BalanceSheet = ({ onNext }: Props) => {
   const [balanceSheets, setBalanceSheets] = useState<BalanceSheet[]>();
   const {
     register,
@@ -82,27 +85,30 @@ const BalanceSheet = () => {
       </form>
       {isLoading && <Spinner size="lg" />}
       {balanceSheets && (
-        <Table>
-          <Thead>
-            <Tr>
-              <Th>Year</Th>
-              <Th>Month</Th>
-              <Th>ProfitOrLoss</Th>
-              <Th>Asset Value</Th>
-            </Tr>
-          </Thead>
-          <Tbody>
-            {balanceSheets.map((sheet, index) => (
-              <Tr key={index}>
-                <Td>{sheet.year}</Td>
-                <Td>{sheet.month}</Td>
-                <Td>{sheet.profitOrLoss}</Td>
-                <Td>{sheet.assetsValue}</Td>
+        <Box padding={5}>
+          <Table>
+            <Thead>
+              <Tr>
+                <Th>Year</Th>
+                <Th>Month</Th>
+                <Th>ProfitOrLoss</Th>
+                <Th>Asset Value</Th>
               </Tr>
-            ))}
-          </Tbody>
-          <Tfoot></Tfoot>
-        </Table>
+            </Thead>
+            <Tbody>
+              {balanceSheets.map((sheet, index) => (
+                <Tr key={index}>
+                  <Td>{sheet.year}</Td>
+                  <Td>{sheet.month}</Td>
+                  <Td>{sheet.profitOrLoss}</Td>
+                  <Td>{sheet.assetsValue}</Td>
+                </Tr>
+              ))}
+            </Tbody>
+            <Tfoot></Tfoot>
+          </Table>
+          <Button onClick={onNext}>Next</Button>
+        </Box>
       )}
     </>
   );
