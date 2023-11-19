@@ -30,13 +30,12 @@ const Login = () => {
       setLoading(false);
       navigate("/home", { state: { ...result.data } });
     } else if (result.status >= 400) {
-      setLoading(false);
       setError({ ...error, regError: result.data });
     }
   };
   const LoggedIn = async (input: AuthUser) => {
-    const res = await authService()(input);
     setLoading(true);
+    const res = await authService()(input);
     if (res.status == 200) {
       setLoading(false);
       navigate("/home", { state: { ...res.data } });

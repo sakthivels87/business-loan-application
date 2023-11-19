@@ -7,7 +7,9 @@ const decisionEngine = () => {
 
   return (request: any) =>
     apiClient
-      .post(request)
+      .post("", request)
       .then((res) => res)
       .catch((err) => err);
 };
+
+export default decisionEngine;

@@ -11,12 +11,22 @@ import {
   StackDivider,
   Text,
 } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
+import decisionEngine from "../services/decisionEngine";
 
 interface Props {
   previewInfo: any;
 }
 const Review = ({ previewInfo }: Props) => {
-  console.log(previewInfo);
+  const navigate = useNavigate();
+  const onSubmitApplication = () => {
+    decisionEngine()({ ...previewInfo })
+      .then((res) => {
+        if (res.status == 200)
+          navigate("/loanApplication", { state: { ...res.data } });
+      })
+      .catch((e) => console.log("Error: ", e));
+  };
   return (
     <Card>
       <CardHeader>
@@ -59,7 +69,11 @@ const Review = ({ previewInfo }: Props) => {
         </Stack>
       </CardBody>
       <CardFooter>
-        <Button variant="solid" colorScheme="blue">
+        <Button
+          variant="solid"
+          colorScheme="blue"
+          onClick={onSubmitApplication}
+        >
           Submit
         </Button>
       </CardFooter>
