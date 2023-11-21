@@ -3,6 +3,7 @@ import {
   Button,
   FormControl,
   FormErrorMessage,
+  FormHelperText,
   FormLabel,
   Heading,
   Input,
@@ -55,6 +56,9 @@ const ApplicationForm = ({ onFilled }: Props) => {
           <FormControl mt={4} isInvalid={errors.name != undefined} isRequired>
             <FormLabel>Name: </FormLabel>
             <Input id="name" type="text" {...register("name")} />
+            <FormHelperText>
+              Name should be min 3 and max 25 characters long.
+            </FormHelperText>
             {errors.name && (
               <FormErrorMessage>{errors.name?.message}</FormErrorMessage>
             )}
@@ -70,6 +74,9 @@ const ApplicationForm = ({ onFilled }: Props) => {
               type="number"
               {...register("establishedYear", { valueAsNumber: true })}
             />
+            <FormHelperText>
+              Year must be in between 1800 to 2023
+            </FormHelperText>
             {errors.name && (
               <FormErrorMessage>
                 {errors.establishedYear?.message}
@@ -87,6 +94,7 @@ const ApplicationForm = ({ onFilled }: Props) => {
               type="text"
               {...register("profitOrLoss", { valueAsNumber: true })}
             />
+            <FormHelperText>Must be numbers</FormHelperText>
             {errors.name && (
               <FormErrorMessage>
                 {errors.profitOrLoss?.message}
@@ -104,6 +112,9 @@ const ApplicationForm = ({ onFilled }: Props) => {
               type="text"
               {...register("preAssessment", { valueAsNumber: true })}
             />
+            <FormHelperText>
+              Accetable, preassessment value in between 1 to 100
+            </FormHelperText>
             {errors.name && (
               <FormErrorMessage>
                 {errors.preAssessment?.message}

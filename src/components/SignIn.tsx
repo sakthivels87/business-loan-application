@@ -42,6 +42,7 @@ const SignIn = ({ onSignIn }: Props) => {
       <FormControl isInvalid={errors.email != undefined} isRequired>
         <FormLabel>Email: </FormLabel>
         <Input type="email" {...register("email")} />
+        <FormHelperText>Should be, valid registered email.</FormHelperText>
         {errors.email && (
           <FormErrorMessage>{errors.email?.message}</FormErrorMessage>
         )}
@@ -49,6 +50,7 @@ const SignIn = ({ onSignIn }: Props) => {
       <FormControl isInvalid={errors.password !== undefined} mt={5} isRequired>
         <FormLabel>Password: </FormLabel>
         <Input type="password" {...register("password")} />
+        <FormHelperText>Should be valid password</FormHelperText>
         {errors.password && (
           <FormErrorMessage>{errors.password?.message}</FormErrorMessage>
         )}

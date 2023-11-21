@@ -5,6 +5,7 @@ import {
   Button,
   FormControl,
   FormErrorMessage,
+  FormHelperText,
   FormLabel,
   Select,
   Spinner,
@@ -61,6 +62,7 @@ const BalanceSheet = ({ onNext }: Props) => {
             <option value="option4">Option 4</option>
             <option value="option5">Option 5</option>
           </Select>
+          <FormHelperText>Select a account provider</FormHelperText>
         </FormControl>
         <FormControl mt={5}>
           <FormLabel>Select the Year:</FormLabel>
@@ -75,6 +77,7 @@ const BalanceSheet = ({ onNext }: Props) => {
             <option value="2022">2022</option>
             <option value="2023">2023</option>
           </Select>
+          <FormHelperText>Select the year to get balance sheet</FormHelperText>
           <FormErrorMessage>Year is required!</FormErrorMessage>
         </FormControl>
         <Box mt={5}>

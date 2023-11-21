@@ -4,6 +4,7 @@ import {
   FormErrorMessage,
   Input,
   Button,
+  FormHelperText,
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -47,6 +48,7 @@ const UserRegistration = ({ onRegister }: Props) => {
       <FormControl isInvalid={errors.name != undefined} isRequired>
         <FormLabel>Name: </FormLabel>
         <Input id="name" type="text" {...register("name")} />
+        <FormHelperText>Name should be min 3 and max 15.</FormHelperText>
         {errors.name && (
           <FormErrorMessage>{errors.name?.message}</FormErrorMessage>
         )}
@@ -54,6 +56,7 @@ const UserRegistration = ({ onRegister }: Props) => {
       <FormControl isInvalid={errors.email != undefined} isRequired>
         <FormLabel>Email:</FormLabel>
         <Input type="email" {...register("email")} />
+        <FormHelperText>Email should be valid one.</FormHelperText>
         {errors.email && (
           <FormErrorMessage>{errors.email?.message}</FormErrorMessage>
         )}
@@ -61,6 +64,9 @@ const UserRegistration = ({ onRegister }: Props) => {
       <FormControl isInvalid={errors.password != undefined} isRequired>
         <FormLabel>Password: </FormLabel>
         <Input type="password" {...register("password")} />
+        <FormHelperText>
+          Password must be min 5 and max 15 characters long.
+        </FormHelperText>
         {errors.password && (
           <FormErrorMessage>{errors.password?.message}</FormErrorMessage>
         )}
